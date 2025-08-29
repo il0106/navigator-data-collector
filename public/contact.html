@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Navigator Data Collector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Navigator Data</div>
+            <ul class="nav-links">
+                <li><a href="/">Главная</a></li>
+                <li><a href="/about">О нас</a></li>
+                <li><a href="/services">Услуги</a></li>
+                <li><a href="/contact">Контакты</a></li>
+                <li><a href="/gallery">Галерея</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Свяжитесь с нами</h1>
+            <p>У вас есть вопросы? Мы готовы помочь!</p>
+        </section>
+
+        <section class="content">
+            <h2>Форма обратной связи</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Тема:</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Сообщение:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="btn">Отправить сообщение</button>
+            </form>
+        </section>
+
+        <section class="content">
+            <h2>Контактная информация</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 1rem;">
+                <div style="background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 10px;">
+                    <h3>📧 Email</h3>
+                    <p>info@navigator-data.com</p>
+                    <p>support@navigator-data.com</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 10px;">
+                    <h3>🌐 Веб-сайт</h3>
+                    <p>www.navigator-data.com</p>
+                    <p>Документация и API</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 10px;">
+                    <h3>💬 Социальные сети</h3>
+                    <p>GitHub: /navigator-data</p>
+                    <p>Twitter: @navigator_data</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 10px;">
+                    <h3>⏰ Время работы</h3>
+                    <p>Пн-Пт: 9:00 - 18:00</p>
+                    <p>Сб-Вс: 10:00 - 16:00</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <h2>Часто задаваемые вопросы</h2>
+            <div style="margin-top: 1rem;">
+                <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <h4>🔒 Безопасны ли мои данные?</h4>
+                    <p>Да, мы собираем только общедоступную информацию о браузере и не запрашиваем личные данные.</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <h4>📊 Как используются собранные данные?</h4>
+                    <p>Данные используются только в образовательных целях для демонстрации возможностей веб-технологий.</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <h4>🌐 Работает ли сайт на всех браузерах?</h4>
+                    <p>Сайт оптимизирован для современных браузеров: Chrome, Firefox, Safari, Edge.</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                    <h4>💻 Можно ли использовать код в своих проектах?</h4>
+                    <p>Да, весь код открыт и доступен для изучения и использования в образовательных целях.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Navigator Data Collector. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Обработка формы
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            console.log('📧 Отправка формы:', data);
+            alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
+            
+            this.reset();
+        });
+    </script>
+</body>
+</html> 
