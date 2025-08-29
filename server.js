@@ -5,7 +5,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware для статических файлов
-app.use(express.static('public'));
+app.use(express.static('public', {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.css')) {
+      res.setHeader('Content-Type', 'text/css');
+    } else if (path.endsWith('.js')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    }
+  }
+}));
 
 // Маршруты для страниц
 app.get('/', (req, res) => {
