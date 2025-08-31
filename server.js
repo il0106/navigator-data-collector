@@ -17,9 +17,25 @@ app.use(express.static(__dirname, {
   }
 }));
 
+// Явные маршруты для статических файлов
+app.get('/styles.css', (req, res) => {
+    res.setHeader('Content-Type', 'text/css');
+    res.sendFile(path.join(__dirname, 'styles.css'));
+});
+
+app.get('/script.js', (req, res) => {
+    res.setHeader('Content-Type', 'application/javascript');
+    res.sendFile(path.join(__dirname, 'script.js'));
+});
+
 // Основной маршрут для главной страницы
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Тестовая страница
+app.get('/test', (req, res) => {
+    res.sendFile(path.join(__dirname, 'test.html'));
 });
 
 // API endpoint для получения данных navigator
