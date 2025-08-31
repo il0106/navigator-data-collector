@@ -4,8 +4,8 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware для статических файлов с явным указанием MIME-типов
-app.use(express.static('public', {
+// Middleware для статических файлов из корня проекта
+app.use(express.static(__dirname, {
   setHeaders: (res, filePath) => {
     if (filePath.endsWith('.css')) {
       res.setHeader('Content-Type', 'text/css');
@@ -17,50 +17,18 @@ app.use(express.static('public', {
   }
 }));
 
-// Явные маршруты для статических файлов
-app.get('/styles.css', (req, res) => {
-    res.setHeader('Content-Type', 'text/css');
-    res.sendFile(path.join(__dirname, 'styles.css'));
-});
-
-app.get('/script.js', (req, res) => {
-    res.setHeader('Content-Type', 'application/javascript');
-    res.sendFile(path.join(__dirname, 'script.js'));
-});
-
-// Маршруты для страниц
+// Основной маршрут для главной страницы
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'about.html'));
-});
+// // API endpoint для получения данных navigator
+// app.post('/api/navigator-data', express.json(), (req, res) => {
+//     console.log('Получены данные navigator:', req.body);
+//     res.json({ success: true, message: 'Данные получены' });
+// });
 
-app.get('/services', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'services.html'));
-});
-
-app.get('/contact', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'contact.html'));
-});
-
-app.get('/gallery', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'gallery.html'));
-});
-
-// API endpoint для получения данных navigator
-app.post('/api/navigator-data', express.json(), (req, res) => {
-    console.log('Получены данные navigator:', req.body);
-    res.json({ success: true, message: 'Данные получены' });
-});
-
-app.listen(PORT, () => {
-    console.log(`Сервер запущен на http://localhost:${PORT}`);
-    console.log('Доступные страницы:');
-    console.log('- Главная: http://localhost:3000/');
-    console.log('- О нас: http://localhost:3000/about');
-    console.log('- Услуги: http://localhost:3000/services');
-    console.log('- Контакты: http://localhost:3000/contact');
-    console.log('- Галерея: http://localhost:3000/gallery');
-}); 
+// app.listen(PORT, () => {
+//     console.log(`Сервер запущен на http://localhost:${PORT}`);
+//     console.log('Главная страница: http://localhost:3000/');
+// }); 
