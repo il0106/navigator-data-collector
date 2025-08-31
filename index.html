@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Information Collector</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #fff;
+        }
+
+        .section iframe {
+            display: block;
+            margin: 0 auto;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .loading {
+            color: #666;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .iframe-section iframe {
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Browser Information Collector</div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Browser Information Collector</h1>
+            <p>Веб-сайт для сбора и анализа данных браузера</p>
+            <button class="btn" onclick="refreshAllData()">🔄 Обновить все данные</button>
+        </section>
+
+        <div class="section">
+            <h2>iframe - Демонстрационный внешний контент</h2>
+            <iframe src="https://cloud.onlinegames.io/games/2022/construct/122/jul-moto-racing/index-og.html" width="600" height="400"></iframe>
+        </div>
+
+        <div class="section">
+            <h2 id="navigator">1. Navigator Information</h2>
+            <pre id="navigator-info" class="loading">Loading...</pre>
+        </div>
+
+        <div class="section">
+            <h2 id="window">2. Window Information</h2>
+            <pre id="window-info" class="loading">Loading...</pre>
+        </div>
+
+        <div class="section">
+            <h2 id="screen">3. Screen Information</h2>
+            <pre id="screen-info" class="loading">Loading...</pre>
+        </div>
+
+        <div class="section">
+            <h2 id="performance">4. Performance Information</h2>
+            <pre id="performance-info" class="loading">Loading...</pre>
+        </div>
+
+        <div class="section">
+            <h2>5. History Information</h2>
+            <pre id="history-info" class="loading">Loading...</pre>
+        </div>
+
+        <div class="section">
+            <h2>6. Plugins & Extensions</h2>
+            <pre id="plugins-info" class="loading">Loading...</pre>
+        </div>
+
+        <div class="section">
+            <h2>7. Scripts & Iframes</h2>
+            <pre id="scripts-info" class="loading">Loading...</pre>
+        </div>
+
+        <div class="section">
+            <h2>8. Mouse & Keyboard (Move mouse or press any key)</h2>
+            <pre id="input-info">Move mouse or press any key to see information</pre>
+        </div>
+
+        <div class="section">
+            <h2>9. Network Information</h2>
+            <pre id="network-info" class="loading">Loading...</pre>
+        </div>
+
+        <div class="section">
+            <h2>10. Permissions</h2>
+            <pre id="permissions-info" class="loading">Loading...</pre>
+        </div>
+
+        <div class="section">
+            <h2>11. WebGL Information</h2>
+            <pre id="webgl-info" class="loading">Loading...</pre>
+        </div>
+
+        <div class="section">
+            <h2>12. Battery Information</h2>
+            <pre id="battery-info" class="loading">Loading...</pre>
+        </div>
+
+        <div class="section">
+            <h2>13. CPU Information</h2>
+            <pre id="cpu-info" class="loading">Loading...</pre>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html> 
