@@ -4,16 +4,29 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware для статических файлов
+// Middleware для статических файлов с явным указанием MIME-типов
 app.use(express.static('public', {
-  setHeaders: (res, path) => {
-    if (path.endsWith('.css')) {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.css')) {
       res.setHeader('Content-Type', 'text/css');
-    } else if (path.endsWith('.js')) {
+    } else if (filePath.endsWith('.js')) {
       res.setHeader('Content-Type', 'application/javascript');
+    } else if (filePath.endsWith('.html')) {
+      res.setHeader('Content-Type', 'text/html');
     }
   }
 }));
+
+// Явные маршруты для статических файлов
+app.get('/styles.css', (req, res) => {
+    res.setHeader('Content-Type', 'text/css');
+    res.sendFile(path.join(__dirname, 'public', 'styles.css'));
+});
+
+app.get('/script.js', (req, res) => {
+    res.setHeader('Content-Type', 'application/javascript');
+    res.sendFile(path.join(__dirname, 'public', 'script.js'));
+});
 
 // Маршруты для страниц
 app.get('/', (req, res) => {
