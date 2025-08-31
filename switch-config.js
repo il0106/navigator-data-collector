@@ -5,17 +5,19 @@ const path = require('path');
 
 const configs = {
   server: 'vercel.json',
-  static: 'vercel-static.json'
+  static: 'vercel-static.json',
+  simple: 'vercel-simple.json'
 };
 
 const target = process.argv[2];
 
 if (!target || !configs[target]) {
-  console.log('Использование: node switch-config.js [server|static]');
+  console.log('Использование: node switch-config.js [server|static|simple]');
   console.log('');
   console.log('Доступные конфигурации:');
-  console.log('  server - Полная версия с серверными API');
+  console.log('  server - Полная версия с серверными API и явными маршрутами');
   console.log('  static - Статическая версия без сервера');
+  console.log('  simple - Простая версия с автоматическим определением Vercel');
   process.exit(1);
 }
 
@@ -35,13 +37,18 @@ try {
   
   if (target === 'static') {
     console.log('');
-    console.log('💡 Для статического деплоя используйте:');
-    console.log('   - public/index-static.html (вместо index.html)');
+    console.log('💡 Для статического деплоя:');
+    console.log('   - Vercel автоматически определит статические файлы');
+    console.log('   - vercel --prod');
+  } else if (target === 'simple') {
+    console.log('');
+    console.log('💡 Для простого деплоя:');
+    console.log('   - Vercel автоматически определит Node.js проект');
     console.log('   - vercel --prod');
   } else {
     console.log('');
-    console.log('💡 Для серверного деплоя используйте:');
-    console.log('   - public/index.html');
+    console.log('💡 Для серверного деплоя:');
+    console.log('   - Явные маршруты для статических файлов');
     console.log('   - vercel --prod');
   }
   

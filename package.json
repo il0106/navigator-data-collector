@@ -8,8 +8,10 @@
     "dev": "node server.js",
     "deploy:server": "node switch-config.js server && vercel --prod",
     "deploy:static": "node switch-config.js static && vercel --prod",
+    "deploy:simple": "node switch-config.js simple && vercel --prod",
     "config:server": "node switch-config.js server",
-    "config:static": "node switch-config.js static"
+    "config:static": "node switch-config.js static",
+    "config:simple": "node switch-config.js simple"
   },
   "dependencies": {
     "express": "^4.18.2"
