@@ -6,18 +6,20 @@ const path = require('path');
 const configs = {
   server: 'vercel.json',
   static: 'vercel-static.json',
-  simple: 'vercel-simple.json'
+  simple: 'vercel-simple.json',
+  fixed: 'vercel-fixed.json'
 };
 
 const target = process.argv[2];
 
 if (!target || !configs[target]) {
-  console.log('Использование: node switch-config.js [server|static|simple]');
+  console.log('Использование: node switch-config.js [server|static|simple|fixed]');
   console.log('');
   console.log('Доступные конфигурации:');
   console.log('  server - Полная версия с серверными API и явными маршрутами');
   console.log('  static - Статическая версия без сервера');
   console.log('  simple - Простая версия с автоматическим определением Vercel');
+  console.log('  fixed  - Исправленная версия с файлами в корне проекта');
   process.exit(1);
 }
 
@@ -44,6 +46,12 @@ try {
     console.log('');
     console.log('💡 Для простого деплоя:');
     console.log('   - Vercel автоматически определит Node.js проект');
+    console.log('   - vercel --prod');
+  } else if (target === 'fixed') {
+    console.log('');
+    console.log('💡 Для исправленного деплоя:');
+    console.log('   - Статические файлы в корне проекта');
+    console.log('   - Явные MIME-типы');
     console.log('   - vercel --prod');
   } else {
     console.log('');

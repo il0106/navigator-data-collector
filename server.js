@@ -20,12 +20,12 @@ app.use(express.static('public', {
 // Явные маршруты для статических файлов
 app.get('/styles.css', (req, res) => {
     res.setHeader('Content-Type', 'text/css');
-    res.sendFile(path.join(__dirname, 'public', 'styles.css'));
+    res.sendFile(path.join(__dirname, 'styles.css'));
 });
 
 app.get('/script.js', (req, res) => {
     res.setHeader('Content-Type', 'application/javascript');
-    res.sendFile(path.join(__dirname, 'public', 'script.js'));
+    res.sendFile(path.join(__dirname, 'script.js'));
 });
 
 // Маршруты для страниц
